@@ -117,8 +117,8 @@ export async function createRegister(req, res, next) {
         unique(email).then(data => {
 
            if (!data) {
-                const codeA = codeGenerate.generate(password);
-                create(name, last_name, email, codeA, id_dep, id_level, img)
+              //  const codeA = codeGenerate.generate(password);
+                create(name, last_name, email, password, id_dep, id_level, img)
                     .then(data => {
                         res.status(200).json({
                             message: 'Created successfully',
