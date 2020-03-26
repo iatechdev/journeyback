@@ -8,6 +8,7 @@ import userRoutes from './routes/user.routes';
 import depRoutes from './routes/dep.routes';
 import levelRoutes from './routes/level.routes';
 
+import aircraftRoutes from './routes/aircraft.routes';
 
 
 //Server express
@@ -30,4 +31,6 @@ app.use(express.static('public'));
 app.use('/api/users', userRoutes);
 app.use('/api/deps', depRoutes);
 app.use('/api/levels',levelRoutes);
+app.use('/api/aircrafts', aircraftRoutes);
+
 export default app;

@@ -8,12 +8,15 @@ const login = async (username, password) => {
       where: {
         email: username,
         password: password
-      }
+      },
+      attributes: ['id', 'name', 'last_name', 'email', 'id_dep', 'id_level', 'img']
     }).then(data => {
       if (data) {
         return {
           success: true,
-          message: 'Authentication successful!'
+          data: data,
+          message: 'Authentication successful !'
+          
         }
       } else {
         return {

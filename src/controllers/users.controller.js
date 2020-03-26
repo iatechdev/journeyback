@@ -195,7 +195,7 @@ export async function login(req, res, next) {
             .then(data => {
                 if (data.success)
                     res.status(200).json({
-                        message: data.message
+                        data: data
                     });
                 else
                     res.status(401).json({
