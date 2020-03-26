@@ -25,7 +25,7 @@ export default function(sequelize, DataTypes) {
 			field: 'email'
 		},
 		password: {
-			type: DataTypes.STRING(60),
+			type: DataTypes.STRING(120),
 			allowNull: true,
 			field: 'password'
 		},

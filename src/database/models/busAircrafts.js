@@ -1,7 +1,7 @@
 /* jshint indent: 1 */
 
 export default function(sequelize, DataTypes) {
-	const busAircraft = sequelize.define('busAircraft', {
+	const busAircrafts = sequelize.define('busAircrafts', {
 		id: {
 			type: DataTypes.INTEGER(11),
 			allowNull: false,
@@ -28,14 +28,14 @@ export default function(sequelize, DataTypes) {
 			},
 			field: 'id_user'
 		},
-		status: {
+		id_aircraft: {
 			type: DataTypes.INTEGER(11),
 			allowNull: false,
 			references: {
 					model: 'authStatus',
 					key: 'id'
 			},
-			field: 'status'
+			field: 'id_aircraft'
 		},		
 		createdAt: {
 			type: DataTypes.DATE,
@@ -48,8 +48,8 @@ export default function(sequelize, DataTypes) {
 			field: 'updatedAt'
 		}
 	}, {
-		tableName: 'bus_aircraft'
+		tableName: 'bus_aircrafts'
 	});
 
-	return busAircraft;
+	return busAircrafts;
 };

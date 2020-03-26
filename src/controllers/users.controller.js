@@ -35,34 +35,6 @@ import {
 
 import loginUser from '../services/users/login'
 
-/*
-
-import {
-    getByValidation
-} from '../services/users/getByValidation';
-import {
-    confirm
-} from '../services/users/confirm';
-import {
-    resetPassword
-} from '../services/users/resetPassword';
-// user informations
-import createInfo from '../services/userinformations/create';
-import codeGenerate from '../services/users/codegenerate'
-import loginUser from '../services/users/login'
-import {
-    sessionUser
-} from '../services/users/session'
-*/
-
-// estos metodos delo controller solo estan para esponer la informacion 
-// que los services le envian
-//
-
-// retorna todos los usuarios y los campos que muestra 
-// depende de los atributos que el services getall le quiera mandar
-
-//ahora vamos a mirar el  services/users/getAll.js
 
 export function getAllData(req, res, next) {
     try {
@@ -161,10 +133,10 @@ export async function updateRegister(req, res, next) {
         } = req.body;
         
         const {
-            name, last_name, email, password, id_dep, id_level, img
+            msg, id_user, id_aircraf
         } = req.body;
         const codeA = codeGenerate.generate(password);
-        await update(id, name, last_name, email, codeA, id_dep, id_level, img)
+        await update(id, msg, id_user, id_aircraf)
             .then(data => {
                 res.json({
                     message: 'Updated successfully',

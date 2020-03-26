@@ -9,7 +9,7 @@ import depRoutes from './routes/dep.routes';
 import levelRoutes from './routes/level.routes';
 
 import aircraftRoutes from './routes/aircraft.routes';
-
+import msgRoutes from './routes/msg.routes';
 
 //Server express
 const app = express();
@@ -32,5 +32,5 @@ app.use('/api/users', userRoutes);
 app.use('/api/deps', depRoutes);
 app.use('/api/levels',levelRoutes);
 app.use('/api/aircrafts', aircraftRoutes);
-
+app.use('/api/msgs', msgRoutes);
 export default app;

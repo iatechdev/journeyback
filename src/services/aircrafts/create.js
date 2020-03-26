@@ -1,8 +1,8 @@
 import db from '../../database/models/index';
 
-const create = async (name, last_name, email, password, id_dep, id_level, img) => {
-  return await db.authUsers.create({
-    name, last_name, email, password, id_dep, id_level, img
+const create = async (name, reference, id_user, status) => {
+  return await db.busAircrafts.create({
+    name, reference, id_user, status
   }).then(data => {
     return data;
   }).catch(e => {

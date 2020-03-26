@@ -21,20 +21,26 @@ CREATE TABLE `bus_aircraft` (
   CONSTRAINT `status` FOREIGN KEY (`status`) REFERENCES `bus_status` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+INSERT INTO `bus_aircraft` (`id`, `name`, `reference`, `id_user`, `status`, `createdAt`, `updatedAt`) VALUES
+(1,	'lucas',	'qwe',	1,	1,	'2020-03-26 01:34:09.000000',	'2020-03-26 01:34:09.000000');
 
 DROP TABLE IF EXISTS `bus_msg`;
 CREATE TABLE `bus_msg` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `msg` varchar(45) DEFAULT NULL,
+  `msg` varchar(255) DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
-  `id_aircraf` int(11) DEFAULT NULL,
+  `id_aircraft` int(11) DEFAULT NULL,
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_user_idx` (`id_user`),
-  KEY `id_aircraf_idx` (`id_aircraf`),
+  KEY `id_aircraf_idx` (`id_aircraft`),
   CONSTRAINT `bus_msg_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `def_user` (`id`),
-  CONSTRAINT `bus_msg_ibfk_2` FOREIGN KEY (`id_aircraf`) REFERENCES `bus_aircraft` (`id`)
+  CONSTRAINT `bus_msg_ibfk_2` FOREIGN KEY (`id_aircraft`) REFERENCES `bus_aircraft` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+INSERT INTO `bus_msg` (`id`, `msg`, `id_user`, `id_aircraft`, `createdAt`, `updatedAt`) VALUES
+(1,	'mensaje',	1,	1,	'2020-03-26 15:48:04',	'2020-03-26 15:48:04');
 
 DROP TABLE IF EXISTS `bus_status`;
 CREATE TABLE `bus_status` (
@@ -44,6 +50,9 @@ CREATE TABLE `bus_status` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+INSERT INTO `bus_status` (`id`, `name`, `createdAt`) VALUES
+(1,	'ACTIVE',	NULL),
+(2,	'OCCUPIED',	NULL);
 
 DROP TABLE IF EXISTS `cms_departments`;
 CREATE TABLE `cms_departments` (
@@ -81,7 +90,7 @@ CREATE TABLE `def_user` (
   `name` varchar(60) DEFAULT NULL,
   `last_name` varchar(60) DEFAULT NULL,
   `email` varchar(60) DEFAULT NULL,
-  `password` varchar(60) DEFAULT NULL,
+  `password` varchar(120) DEFAULT NULL,
   `id_dep` int(11) DEFAULT NULL,
   `id_level` int(11) DEFAULT NULL,
   `img` varchar(120) DEFAULT NULL,
@@ -95,5 +104,10 @@ CREATE TABLE `def_user` (
   CONSTRAINT `id_level` FOREIGN KEY (`id_level`) REFERENCES `cms_levels` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='tabla usuario';
 
+INSERT INTO `def_user` (`id`, `name`, `last_name`, `email`, `password`, `id_dep`, `id_level`, `img`, `createdAt`, `updatedAt`) VALUES
+(1,	'CARLOS',	'HENAO',	'carlos@gmail.com',	'123',	1,	1,	'profile.jpg',	NULL,	NULL),
+(2,	'MAURICIO',	'ROLDAN',	'mao@gmail.com',	'123',	1,	1,	'profile.jpg',	NULL,	NULL),
+(7,	'luca name',	'perez test',	'lucas@gmail.com',	'c646c6e6285b2aec894063ace28860fc9e8614b6fc85bb58e766b530255a',	1,	1,	'profile.jpg',	'2020-03-23 04:23:57.000000',	'2020-03-23 05:19:38.000000'),
+(8,	'lucas',	'perez',	'lucassss@gmail.com',	'c646c6e6285b2aec894063ace28860fc9e8614b6fc85bb58e766b530255a',	1,	1,	'profile.jpg',	'2020-03-25 20:52:25.000000',	'2020-03-25 20:52:25.000000');
 
--- 2020-03-25 18:16:27
+-- 2020-03-26 16:49:48

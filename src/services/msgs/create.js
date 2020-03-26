@@ -1,8 +1,8 @@
 import db from '../../database/models/index';
 
-const getAll = async () => {
-  return await db.busAircrafts.findAll({
-    attributes: ['id', 'name', 'reference', 'id_user', 'status']
+const create = async (msg, id_user, id_aircraft) => {
+  return await db.busMsgs.create({
+   msg, id_user, id_aircraft
   }).then(data => {
     return data;
   }).catch(e => {
@@ -11,5 +11,5 @@ const getAll = async () => {
 }
 
 module.exports = {
-  getAll
+  create
 }

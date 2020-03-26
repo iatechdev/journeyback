@@ -1,8 +1,8 @@
 import db from '../../database/models/index';
 
 const getAll = async () => {
-  return await db.busAircrafts.findAll({
-    attributes: ['id', 'name', 'reference', 'id_user', 'status']
+  return await db.busMsgs.findAll({
+    attributes: ['id', 'msg', 'id_user', 'id_aircraft']
   }).then(data => {
     return data;
   }).catch(e => {
