@@ -45,9 +45,9 @@ export function getAllData(req, res, next) {
 export function getOneData(req, res, next) {
     try {
         const {
-            id
+            id_user
         } = req.body;
-        getOne(id).then(data => {
+        getOne(id_user).then(data => {
             res.status(200).json({
                 message: 'One row',
                 data: data

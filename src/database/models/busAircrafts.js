@@ -48,7 +48,7 @@ export default function(sequelize, DataTypes) {
 			field: 'updatedAt'
 		}
 	}, {
-		tableName: 'bus_aircrafts'
+		tableName: 'bus_aircraft'
 	});
 
 	return busAircrafts;

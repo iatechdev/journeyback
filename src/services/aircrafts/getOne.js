@@ -1,11 +1,11 @@
 import db from '../../database/models/index';
 
-const getOne = async (id) => {
-  return await db.authUsers.findOne({
+const getOne = async (id_user) => {
+  return await db.busAircrafts.findOne({
     where: {
-      id : id
+      id_user: id_user
     },
-    attributes: ['id', 'name', 'last_name', 'email', 'id_dep', 'id_level', 'img']
+    attributes: ['id', 'name', 'reference', 'id_user', 'status']
   }).then(data => { return data }).catch(e => {
     console.log(e);
   });
