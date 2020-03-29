@@ -72,7 +72,7 @@ export async function createRegister(req, res, next) {
             id_user,
             status
         } = req.body;
-        create(name, reference, id_user, status, status)
+        create(name, reference, id_user, status)
             .then(data => {
                 res.status(200).json({
                     message: 'Created successfully',
