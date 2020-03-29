@@ -5,7 +5,7 @@ const getOne = async (id_aircraft) => {
     where: {
       id_aircraft: id_aircraft
     },
-    attributes: ['id', 'msg', 'id_user', 'id_aircraft']
+    attributes: ['id', 'msg', 'id_user', 'id_aircraft', 'createdAt']
   }).then(data => { return data }).catch(e => {
     console.log(e);
   });

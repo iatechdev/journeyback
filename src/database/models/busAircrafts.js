@@ -27,15 +27,6 @@ export default function(sequelize, DataTypes) {
 				key: 'id'
 			},
 			field: 'id_user'
-		},
-		id_aircraft: {
-			type: DataTypes.INTEGER(11),
-			allowNull: false,
-			references: {
-					model: 'authStatus',
-					key: 'id'
-			},
-			field: 'id_aircraft'
 		},		
 		createdAt: {
 			type: DataTypes.DATE,
