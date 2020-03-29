@@ -27,6 +27,15 @@ export default function(sequelize, DataTypes) {
 				key: 'id'
 			},
 			field: 'id_user'
+		},
+		status: {
+			type: DataTypes.INTEGER(11),
+			allowNull: false,
+			references: {
+					model: 'authStatus',
+					key: 'id'
+			},
+			field: 'status'
 		},		
 		createdAt: {
 			type: DataTypes.DATE,
