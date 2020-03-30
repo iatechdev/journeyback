@@ -7,7 +7,7 @@ import cors from 'cors';//cabeceras
 import userRoutes from './routes/user.routes';
 import depRoutes from './routes/dep.routes';
 import levelRoutes from './routes/level.routes';
-
+import statusRoutes from './routes/status.routes';
 import aircraftRoutes from './routes/aircraft.routes';
 import msgRoutes from './routes/msg.routes';
 
@@ -31,6 +31,8 @@ app.use(express.static('public'));
 app.use('/api/users', userRoutes);
 app.use('/api/deps', depRoutes);
 app.use('/api/levels',levelRoutes);
+app.use('/api/status', statusRoutes);
+
 app.use('/api/aircrafts', aircraftRoutes);
 app.use('/api/msgs', msgRoutes);
 export default app;

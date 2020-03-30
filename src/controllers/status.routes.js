@@ -1,9 +1,6 @@
-import codeGenerate from '../services/users/codegenerate';
-
-
 import {
     getAll
-} from '../services/levels/getAll';
+} from '../services/status/getAll';
 import {
     create
 } from '../services/users/create';
