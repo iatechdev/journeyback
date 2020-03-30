@@ -5,7 +5,7 @@ import {
 
 import {
     getAllData,
-    getOneData,
+    updateRegister,
     createRegister
 } from '../controllers/status.controller';
 

@@ -3,7 +3,12 @@ import {
 } from '../services/status/getAll';
 import {
     create
-} from '../services/users/create';
+}
+from '../services/status/create';
+import {
+    update
+}
+from '../services/status/update';
 
 export function getAllData(req, res, next) {
     try {
@@ -39,6 +44,33 @@ export async function createRegister(req, res, next) {
                 });
             })
             .catch(e => {
+                console.log(e);
+            });
+    } catch (e) {
+        res.status(500).json({
+            message: 'Something goes wrong',
+            data: {},
+            error: true
+        });
+    }
+}
+export async function updateRegister(req, res, next) {
+    try {
+        const {
+            id
+        } = req.body;
+
+        const {
+            name
+        } = req.body;
+        //const codeA = codeGenerate.generate(password);
+        await update(id, name)
+            .then(data => {
+                res.json({
+                    message: 'Updated successfully',
+                    data: data
+                });
+            }).catch(e => {
                 console.log(e);
             });
     } catch (e) {
