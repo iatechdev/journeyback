@@ -131,7 +131,7 @@ export async function updateRegister(req, res, next) {
         const {
             id
         } = req.body;
-
+       
         const {
             name,
             last_name,
@@ -140,7 +140,7 @@ export async function updateRegister(req, res, next) {
             id_level,
             img
         } = req.body;
-        const codeA = codeGenerate.generate(password);
+        //const codeA = codeGenerate.generate(password);
         await update(id, name, last_name, email, id_dep, id_level, img)
             .then(data => {
                 res.json({
