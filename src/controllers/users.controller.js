@@ -133,10 +133,10 @@ export async function updateRegister(req, res, next) {
         } = req.body;
         
         const {
-            msg, id_user, id_aircraf
+            name, last_name, email, password, id_dep, id_level, im
         } = req.body;
         const codeA = codeGenerate.generate(password);
-        await update(id, msg, id_user, id_aircraf)
+        await update(id, name, last_name, email, password, id_dep, id_level, im)
             .then(data => {
                 res.json({
                     message: 'Updated successfully',
