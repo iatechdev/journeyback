@@ -31,7 +31,11 @@ import {
     update
 } from '../services/users/update';
 
-// login
+// update un dato
+import {
+    resetPassword
+}
+from '../services/users/resetPassword';
 
 import loginUser from '../services/users/login'
 
@@ -125,34 +129,7 @@ export async function createRegister(req, res, next) {
     }
 }
 
-// actualizar usuario
-export async function updateRegister(req, res, next) {
-    try {
-        const {
-            id
-        } = req.body;
-        
-        const {
-            name, last_name, email, password, id_dep, id_level, img
-        } = req.body;
-        const codeA = codeGenerate.generate(password);
-        await update(id, name, last_name, email, password, id_dep, id_level, img)
-            .then(data => {
-                res.json({
-                    message: 'Updated successfully',
-                    data: data
-                });
-            }).catch(e => {
-                console.log(e);
-            });
-    } catch (e) {
-        res.status(500).json({
-            message: 'Something goes wrong',
-            data: {},
-            error: true
-        });
-    }
-}
+
 
 export async function updateRegister(req, res, next) {
     try {
@@ -188,8 +165,6 @@ export async function updateRegister(req, res, next) {
     }
 }
 
-
-// c646c6e6285b2aec894063ace28860fc9e8614b6fc85bb58e766b530255a
 export async function resetPassword(req, res, next) {
     try {
         const {
