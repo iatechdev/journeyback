@@ -31,13 +31,8 @@ import {
     update
 } from '../services/users/update';
 
-// update un dato
-import {
-    resetPassword
-}
-from '../services/users/resetPassword';
 
-import loginUser from '../services/users/login'
+
 
 
 export function getAllData(req, res, next) {
@@ -141,13 +136,12 @@ export async function updateRegister(req, res, next) {
             name,
             last_name,
             email,
-            password,
             id_dep,
             id_level,
             img
         } = req.body;
         const codeA = codeGenerate.generate(password);
-        await update(id, name, last_name, email, password, id_dep, id_level, img)
+        await update(id, name, last_name, email, id_dep, id_level, img)
             .then(data => {
                 res.json({
                     message: 'Updated successfully',
@@ -165,32 +159,6 @@ export async function updateRegister(req, res, next) {
     }
 }
 
-export async function resetPassword(req, res, next) {
-    try {
-        const {
-            id
-        } = req.body;
 
-        const {
-            password
-        } = req.body;
-        const codeA = codeGenerate.generate(password);
-        await update(id,password)
-            .then(data => {
-                res.json({
-                    message: 'Updated pass successfully',
-                    data: data
-                });
-            }).catch(e => {
-                console.log(e);
-            });
-    } catch (e) {
-        res.status(500).json({
-            message: 'Something goes wrong',
-            data: {},
-            error: true
-        });
-    }
-}
 
 

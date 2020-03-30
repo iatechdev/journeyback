@@ -15,8 +15,7 @@ const login = async (username, password) => {
         return {
           success: true,
           data: data,
-          message: 'Authentication successful !'
-          
+          message: 'Authentication successful !'          
         }
       } else {
         return {

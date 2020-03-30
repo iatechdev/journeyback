@@ -1,10 +1,8 @@
 
-// import { userEmitter } from '../../subscribers/user.listener'
-//import MailerService from '../mailer/mailer';
 import db from '../../database/models/index';
 
 
-const resetPassword = async (id,  password) => {
+const resetPass = async (id, password) => {
   return await db.authUsers.update({
     password,
   }, {
@@ -19,5 +17,5 @@ const resetPassword = async (id,  password) => {
 }
 
 module.exports = {
-  resetPassword
+  resetPass
 }
