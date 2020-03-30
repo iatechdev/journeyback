@@ -154,31 +154,62 @@ export async function updateRegister(req, res, next) {
     }
 }
 
-// login user
-
-// c646c6e6285b2aec894063ace28860fc9e8614b6fc85bb58e766b530255a
-export async function login(req, res, next) {
+export async function updateRegister(req, res, next) {
     try {
         const {
-            username,
-            password
+            id
         } = req.body;
-        await loginUser.login(username, password)
+
+        const {
+            name,
+            last_name,
+            email,
+            password,
+            id_dep,
+            id_level,
+            img
+        } = req.body;
+        const codeA = codeGenerate.generate(password);
+        await update(id, name, last_name, email, password, id_dep, id_level, img)
             .then(data => {
-                if (data.success)
-                    res.status(200).json({
-                        data: data
-                    });
-                else
-                    res.status(401).json({
-                        message: data.message,
-                        token: false
-                    });
+                res.json({
+                    message: 'Updated successfully',
+                    data: data
+                });
             }).catch(e => {
-                console.log('error', e);
+                console.log(e);
             });
     } catch (e) {
-        console.log(e);
+        res.status(500).json({
+            message: 'Something goes wrong',
+            data: {},
+            error: true
+        });
+    }
+}
+
+
+// c646c6e6285b2aec894063ace28860fc9e8614b6fc85bb58e766b530255a
+export async function resetPassword(req, res, next) {
+    try {
+        const {
+            id
+        } = req.body;
+
+        const {
+            password
+        } = req.body;
+        const codeA = codeGenerate.generate(password);
+        await update(id,password)
+            .then(data => {
+                res.json({
+                    message: 'Updated pass successfully',
+                    data: data
+                });
+            }).catch(e => {
+                console.log(e);
+            });
+    } catch (e) {
         res.status(500).json({
             message: 'Something goes wrong',
             data: {},

@@ -6,7 +6,8 @@ import {
   getOneData,
   createRegister,
   updateRegister,
-  login
+  login,
+  resetPassword
 } from '../controllers/users.controller';
 
 const router = Router();
@@ -21,5 +22,7 @@ router.post('/read', getOneData);//trae un dato
 router.post('/create', createRegister);// crea un registro
 router.post('/update/', updateRegister); // actualiza un registro
 router.post('/login', login); //sirve de login hay que incluirle el jwt
+router.post('/resetPassword', resetPassword); //sirve de login hay que incluirle el jwt
+
 
 export default router;
