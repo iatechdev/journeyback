@@ -36,7 +36,11 @@ export default function(sequelize, DataTypes) {
 					key: 'id'
 			},
 			field: 'status'
-		},		
+		}, img: {
+			type: DataTypes.STRING(120),
+			notEmpty: true,
+			field: 'img'
+		},
 		createdAt: {
 			type: DataTypes.DATE,
 			allowNull: true,

@@ -5,7 +5,8 @@ const getOne = async (id_user) => {
     where: {
       id_user: id_user
     },
-    attributes: ['id', 'name', 'reference', 'id_user', 'status', 'createdAt']
+    attributes: ['id', 'name', 'reference', 'id_user', 'status', 'img', 'createdAt'
+    ]
   }).then(data => { return data }).catch(e => {
     console.log(e);
   });
