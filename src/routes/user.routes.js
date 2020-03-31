@@ -8,7 +8,8 @@ import {
   getAllData,
   getOneData,
   createRegister,
-  updateRegister
+  updateRegister,
+  login
 } from '../controllers/users.controller';
 
 
@@ -24,6 +25,8 @@ router.post('/read', getOneData);//trae un dato
 router.post('/create', createRegister);// crea un registro
 router.post('/update', updateRegister); // actualiza un registro
 router.post('/resetpass', resetPassword);
+router.post('/login', login);
+
 
 
 

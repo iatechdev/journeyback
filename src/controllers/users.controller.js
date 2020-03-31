@@ -31,8 +31,9 @@ import {
     update
 } from '../services/users/update';
 
+// login
 
-
+import loginUser from '../services/users/login'
 
 
 export function getAllData(req, res, next) {
@@ -82,13 +83,19 @@ export function getOneData(req, res, next) {
 export async function createRegister(req, res, next) {
     try {
         const {
-            name, last_name, email, password,  id_dep, id_level, img
+            name,
+            last_name,
+            email,
+            password,
+            id_dep,
+            id_level,
+            img
         } = req.body;
 
         unique(email).then(data => {
 
-           if (!data) {
-              //  const codeA = codeGenerate.generate(password);
+            if (!data) {
+                //  const codeA = codeGenerate.generate(password);
                 create(name, last_name, email, password, id_dep, id_level, img)
                     .then(data => {
                         res.status(200).json({
@@ -106,14 +113,14 @@ export async function createRegister(req, res, next) {
                     error: true
                 });
             }
-            
+
         }).catch(e => {
-                    res.status(500).json({
-                        message: 'Something goes 2 wrong',
-                        data: {},
-                        error: true
-                    });
-         });
+            res.status(500).json({
+                message: 'Something goes 2 wrong',
+                data: {},
+                error: true
+            });
+        });
 
     } catch (e) {
         res.status(500).json({
@@ -131,7 +138,7 @@ export async function updateRegister(req, res, next) {
         const {
             id
         } = req.body;
-       
+
         const {
             name,
             last_name,
@@ -159,6 +166,34 @@ export async function updateRegister(req, res, next) {
     }
 }
 
-
+export async function login(req, res, next) {
+    try {
+        const {
+            username,
+            password
+        } = req.body;
+        await loginUser.login(username, password)
+            .then(data => {
+                if (data.success)
+                    res.status(200).json({
+                        data: data
+                    });
+                else
+                    res.status(401).json({
+                        message: data.message,
+                        token: false
+                    });
+            }).catch(e => {
+                console.log('error', e);
+            });
+    } catch (e) {
+        console.log(e);
+        res.status(500).json({
+            message: 'Something goes wrong',
+            data: {},
+            error: true
+        });
+    }
+}
 
 
