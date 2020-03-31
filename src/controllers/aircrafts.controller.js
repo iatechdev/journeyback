@@ -102,10 +102,11 @@ export async function updateRegister(req, res, next) {
             name,
             reference,
             id_user,
-            status
+            status,
+            img
         } = req.body;
         //const codeA = codeGenerate.generate(password);
-        await update(id, name, reference, id_user, status)
+        await update(id, name, reference, id_user, status,img)
             .then(data => {
                 res.json({
                     message: 'Updated successfully',
