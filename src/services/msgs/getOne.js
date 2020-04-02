@@ -1,7 +1,7 @@
 import db from '../../database/models/index';
 
 const getOne = async (id_aircraft) => {
-  return await db.busMsgs.findOne({
+  return await db.busMsgs.findAll({
     where: {
       id_aircraft: id_aircraft
     },
