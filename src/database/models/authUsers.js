@@ -66,5 +66,11 @@ export default function(sequelize, DataTypes) {
 		tableName: 'def_user'
 	});
 
+	authUsers.associate = function (models) {
+		authUsers.hasMany(models.busMsgs, {
+			foreignKey: 'id_user',
+			as: 'busMsgs'
+		});
+	}
 	return authUsers;
 };

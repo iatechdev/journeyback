@@ -45,6 +45,11 @@ export default function(sequelize, DataTypes) {
 	}, {
 		tableName: 'bus_msg'
 	});
-
+	busMsgs.associate = function (models) {
+		busMsgs.belongsTo(models.authUsers, {
+			foreignKey: 'id_user',
+			as: 'authUsers'
+		});
+	}
 	return busMsgs;
 };
