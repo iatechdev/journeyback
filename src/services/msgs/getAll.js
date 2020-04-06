@@ -2,7 +2,8 @@ import db from '../../database/models/index';
 
 const getAll = async () => {
   return await db.busMsgs.findAll({
-    attributes: ['id', 'msg', 'id_user', 'id_aircraft', 'createdAt']
+    attributes: ['id_aircraft',[db.sequelize.fn('count', db.sequelize.col('id_aircraft')), 'count_aircraft']],
+    group: ['id_aircraft']
   }).then(data => {
     return data;
   }).catch(e => {
