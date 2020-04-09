@@ -9,7 +9,12 @@ const login = async (username, password) => {
         email: username,
         password: password
       },
-      attributes: ['id', 'name', 'last_name', 'email', 'id_dep', 'id_level', 'img']
+      include: [{
+        model: db.authDeps,
+        as: 'authDeps',
+        attributes: ['id', 'name']
+      }],
+      attributes: ['id', 'name', 'last_name', 'email', 'id_level', 'img']
     }).then(data => {
       if (data) {
         return {
