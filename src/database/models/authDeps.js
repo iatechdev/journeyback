@@ -27,6 +27,11 @@ export default function(sequelize, DataTypes) {
 	}, {
 		tableName: 'cms_departments'
 	});
-
+	authDeps.associate = function (models) {
+		authDeps.hasMany(models.authUsers, {
+			foreignKey: 'id_dep',
+			as: 'authUsers'
+		});
+	}
 	return authDeps;
 };

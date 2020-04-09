@@ -4,15 +4,29 @@ import morgan from 'morgan';//middleware de registrador de solicitudes HTTP
 import cors from 'cors';//cabeceras
 
 //cargamos las rutas creadas en la carpeta routes
-import userRoutes from './routes/user.routes';
-import depRoutes from './routes/dep.routes';
-import levelRoutes from './routes/level.routes';
-import statusRoutes from './routes/status.routes';
-import aircraftRoutes from './routes/aircraft.routes';
-import msgRoutes from './routes/msg.routes';
+import userRoutes from './src/routes/user.routes';
+import depRoutes from './src/routes/dep.routes';
+import levelRoutes from './src/routes/level.routes';
+import statusRoutes from './src/routes/status.routes';
+import aircraftRoutes from './src/routes/aircraft.routes';
+import msgRoutes from './src/routes/msg.routes';
+
+
 
 //Server express
-const app = express();
+
+const app = require('express')();
+
+var server = require('http').createServer(app);;
+var io = require('socket.io')(server);
+
+
+app.get('/', (req, res) => {
+   res.sendFile(__dirname + '/index.html');
+});
+io.on('connection', function (socket) {
+    console.log('a user connected');
+});
 
 // middlewares
 app.use(morgan('dev'));
@@ -35,4 +49,8 @@ app.use('/api/status', statusRoutes);
 
 app.use('/api/aircrafts', aircraftRoutes);
 app.use('/api/msgs', msgRoutes);
+
+
+
+
 export default app;

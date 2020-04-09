@@ -72,5 +72,11 @@ export default function(sequelize, DataTypes) {
 			as: 'busMsgs'
 		});
 	}
+	authUsers.associate = function (models) {
+		authUsers.belongsTo(models.authDeps, {
+			foreignKey: 'id_dep',
+			as: 'authDeps'
+		});
+	}	
 	return authUsers;
 };

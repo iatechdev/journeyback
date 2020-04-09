@@ -5,7 +5,12 @@ const getOne = async (id) => {
     where: {
       id : id
     },
-    attributes: ['id', 'name', 'last_name', 'email', 'id_dep', 'id_level', 'img']
+    include: [{
+      model: db.authDeps,
+      as: 'authDeps',
+      attributes: ['id', 'name' ]
+    }],
+    attributes: ['id', 'name', 'last_name', 'email',  'id_level', 'img']
   }).then(data => { return data }).catch(e => {
     console.log(e);
   });

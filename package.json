@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.js --exec babel-node",
+    "dev": "nodemon index.js --exec babel-node",
     "build": "babel src --out-dir dist",
     "start": "node dist/index.js"
   },
@@ -12,25 +12,26 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@babel/polyfill": "^7.6.0",
+    "@babel/polyfill": "^7.8.7",
     "cors": "^2.8.5",
-    "email-templates": "^6.0.3",
+    "email-templates": "^6.1.1",
+    "events": "^3.1.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "morgan": "^1.9.1",
+    "morgan": "^1.10.0",
     "multer": "^1.4.2",
     "mysql2": "^1.7.0",
-    "nodemailer": "^6.3.1",
+    "nodemailer": "^6.4.6",
     "pug": "^2.0.4",
-    "sequelize": "^5.19.2",
-    "skype": "0.0.0"
+    "sequelize": "^5.21.6",
+    "socket.io": "^2.3.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.6.2",
-    "@babel/core": "^7.6.2",
-    "@babel/node": "^7.6.2",
-    "@babel/plugin-proposal-class-properties": "^7.7.0",
-    "@babel/preset-env": "^7.6.2",
-    "nodemon": "^1.19.3"
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.9.0",
+    "nodemon": "^1.19.4"
   }
 }

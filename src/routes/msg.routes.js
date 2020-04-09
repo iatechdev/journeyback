@@ -20,4 +20,8 @@ router.post('/', getAllData);
 router.post('/read', getOneData);
 router.post('/create', createRegister);
 
+
+
+
+
 export default router;
