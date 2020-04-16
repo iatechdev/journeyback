@@ -39,6 +39,6 @@ app.use('/api/status', statusRoutes);
 app.use('/api/aircrafts', aircraftRoutes);
 app.use('/api/msgs', msgRoutes);
 
-server.listen(3001, function () {
-  console.log('listening on *:3001');
+server.listen(3000, function () {
+  console.log('listening on *:3000');
 });
