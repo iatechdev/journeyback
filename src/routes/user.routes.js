@@ -1,5 +1,5 @@
 import { Router } from 'express';
-
+import multer from 'multer';
 import {
   resetPassword
 } from '../controllers/pass.controller';
@@ -11,7 +11,9 @@ import {
   updateRegister,
   login
 } from '../controllers/users.controller';
-
+const multerupload = multer({
+  dest: './uploads/'
+})
 
 const router = Router();
 
@@ -22,8 +24,8 @@ const router = Router();
 
 router.post('/', getAllData);//trae todos los datos
 router.post('/read', getOneData,);//trae un dato
-router.post('/create', createRegister);// crea un registro
-router.post('/update', updateRegister); // actualiza un registro
+router.post('/create', multerupload.any(), createRegister);
+router.post('/update', multerupload.any(), updateRegister);
 router.post('/resetpass', resetPassword);
 router.post('/login', login);
 

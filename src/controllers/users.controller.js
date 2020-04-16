@@ -79,6 +79,7 @@ export function getOneData(req, res, next) {
     }
 }
 
+
 // crear usuario
 export async function createRegister(req, res, next) {
     try {
@@ -88,15 +89,13 @@ export async function createRegister(req, res, next) {
             email,
             password,
             id_dep,
-            id_level,
-            img
+            id_level
         } = req.body;
-
         unique(email).then(data => {
 
             if (!data) {
                 //  const codeA = codeGenerate.generate(password);
-                create(name, last_name, email, password, id_dep, id_level, img)
+                create(name, last_name, email, password, id_dep, id_level, req.files)
                     .then(data => {
                         res.status(200).json({
                             message: 'Created successfully',
