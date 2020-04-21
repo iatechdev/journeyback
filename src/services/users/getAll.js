@@ -14,7 +14,7 @@ const getAll = async () => {
         as: 'authDeps',
         attributes: ['id', 'name']
       }],
-      attributes: ['id', 'name', 'last_name', 'email', 'id_level', 'img']
+      attributes: ['id', 'name', 'last_name', 'email', 'id_level', 'img', 'createdAt', 'updatedAt']
   }).then(data => {
     return data;
   }).catch(e => {

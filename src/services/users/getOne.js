@@ -10,7 +10,7 @@ const getOne = async (id) => {
       as: 'authDeps',
       attributes: ['id', 'name' ]
     }],
-    attributes: ['id', 'name', 'last_name', 'email',  'id_level', 'img']
+    attributes: ['id', 'name', 'last_name', 'email', 'id_level', 'img', 'createdAt', 'updatedAt']
   }).then(data => { return data }).catch(e => {
     console.log(e);
   });
