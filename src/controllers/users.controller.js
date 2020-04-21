@@ -89,13 +89,14 @@ export async function createRegister(req, res, next) {
             email,
             password,
             id_dep,
-            id_level
+            id_level,
+            img
         } = req.body;
         unique(email).then(data => {
 
             if (!data) {
                 //  const codeA = codeGenerate.generate(password);
-                create(name, last_name, email, password, id_dep, id_level, req.files)
+                create(name, last_name, email, password, id_dep, id_level, img)
                     .then(data => {
                         res.status(200).json({
                             message: 'Created successfully',
@@ -143,11 +144,10 @@ export async function updateRegister(req, res, next) {
             last_name,
             email,
             id_dep,
-            id_level,
-            img
+            id_level
         } = req.body;
         //const codeA = codeGenerate.generate(password);
-        await update(id, name, last_name, email, id_dep, id_level, img)
+        await update(id, name, last_name, email, id_dep, id_level, req.files)
             .then(data => {
                 res.json({
                     message: 'Updated successfully',
