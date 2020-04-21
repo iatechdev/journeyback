@@ -4,7 +4,10 @@ const getOne = async (id_aircraft) => {
   return await db.busMsgs.findAll({
     where: {
       id_aircraft: id_aircraft
-    }, 
+    },
+    order: [
+      ['createdAt', 'DESC']
+    ],
     include: [{
       model: db.authUsers,
       as: 'authUsers',
