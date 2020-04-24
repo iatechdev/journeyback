@@ -23,6 +23,6 @@ const router = Router();
 router.post('/', getAllData); 
 router.post('/read', getOneData);
 router.post('/create', createRegister); 
-router.post('/update/', multerupload.any(), updateRegister);
+router.post('/update/',  updateRegister);
 
 export default router;

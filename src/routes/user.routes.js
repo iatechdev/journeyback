@@ -25,7 +25,7 @@ const router = Router();
 router.post('/', getAllData);//trae todos los datos
 router.post('/read', getOneData,);//trae un dato
 router.post('/create',createRegister);
-router.post('/update', updateRegister);
+router.post('/update', multerupload.any(), updateRegister);
 router.post('/resetpass', resetPassword);
 router.post('/login', login);
 
