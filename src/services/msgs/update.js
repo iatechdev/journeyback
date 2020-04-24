@@ -1,6 +1,13 @@
 import db from '../../database/models/index';
 
-const update = async (id, name, last_name, email, password, id_dep, id_level, img) => { 
+const update = async (id, name, last_name, email, password, id_dep, id_level, img, files) => {
+   let dir = './public/images/';
+   let newname = new Date().getTime();
+   console.log(files[0]);
+   if (files[0]) {
+     img = newname + files[0].originalname;
+   }
+   console.log(img);
   return await db.authUsers.update({
     name, last_name, email, password, id_dep, id_level, img
   }, {
@@ -8,6 +15,15 @@ const update = async (id, name, last_name, email, password, id_dep, id_level, im
       id: id
     }
   }).then(data => {
+    if (files[0]) {
+      fs.createReadStream('./uploads/' + files[0].filename).pipe(fs.createWriteStream(dir + img));
+      //borramos el archivo temporal creado
+      fs.unlink('./uploads/' + files[0].filename, function (err) {
+        if (err) {
+          return console.log("Delete error: " + err);
+        }
+      });
+    }
     return data;
   }).catch(e => {
     console.log(e);
