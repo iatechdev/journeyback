@@ -1,7 +1,7 @@
 import {
     Router
 } from 'express';
-
+import multer from 'multer';
 
 import {
     getAllData,
@@ -9,6 +9,9 @@ import {
     createRegister,
     updateRegister
 } from '../controllers/aircrafts.controller';
+const multerupload = multer({
+    dest: './uploads/'
+})
 
 const router = Router();
 
@@ -20,6 +23,6 @@ const router = Router();
 router.post('/', getAllData); 
 router.post('/read', getOneData);
 router.post('/create', createRegister); 
-router.post('/update/', updateRegister); 
+router.post('/update/', multerupload.any(), updateRegister);
 
 export default router;
