@@ -1,15 +1,14 @@
 import fs from 'fs';
 import db from '../../database/models/index';;
 
-const update = async (id, name, last_name, email, id_dep, id_level, files,imagen) => {
-     if (files[0]){
-      let dir = './public/images/';
-      let newname = new Date().getTime();
-      let img = newname + files[0].originalname;
-     }else{
-       img = imagen;
+const update = async (id, name, last_name, email, id_dep, id_level, img, files) => {
+  let dir = './public/images/';
+  let newname = new Date().getTime();
+  console.log(files[0]);
+  if (files[0]){
+       img = newname + files[0].originalname;
      }
-
+console.log(img);
 
   return await db.authUsers.update({
     name, last_name, email, id_dep, id_level, img
