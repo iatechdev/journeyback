@@ -18,6 +18,7 @@ console.log(img);
     },
     attributes: ['id', 'name', 'last_name', 'email', 'id_dep', 'id_level', 'img']
     }).then(data => {
+      console.log(data);
       if (files[0]) {
           fs.createReadStream('./uploads/' + files[0].filename).pipe(fs.createWriteStream(dir + img));
           //borramos el archivo temporal creado
