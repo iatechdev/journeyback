@@ -11,14 +11,14 @@ const getOne = async (id_aircraft) => {
     include: [{
       model: db.authUsers,
       as: 'authUsers',
-      attributes: ['name', 'last_name', 'email', 'file'],
+      attributes: ['name', 'last_name', 'email', 'img'],
        include: [{
           model: db.authDeps,
           as: 'authDeps',
           attributes: ['id','name']
       }]
     }],
-    attributes: ['id', 'msg', 'id_user', 'id_aircraft', 'createdAt']
+    attributes: ['id', 'msg', 'id_user', 'id_aircraft','file', 'createdAt']
   }).then(data => { return data }).catch(e => {
     console.log(e);
   });
