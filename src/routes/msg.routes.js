@@ -1,14 +1,16 @@
 import {
     Router
 } from 'express';
-
+import multer from 'multer';
 
 import {
     getAllData,
     getOneData,
     createRegister
 } from '../controllers/msgs.controller';
-
+const multerupload = multer({
+    dest: './uploads/'
+})
 const router = Router();
 
 
@@ -18,7 +20,7 @@ const router = Router();
 
 router.post('/', getAllData);
 router.post('/read', getOneData);
-router.post('/create', createRegister);
+router.post('/create', multerupload.any(), createRegister);
 
 
 

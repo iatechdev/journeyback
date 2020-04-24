@@ -64,7 +64,7 @@ export async function createRegister(req, res, next) {
         const {
             msg, id_user, id_aircraft
         } = req.body;
-        create(msg, id_user, id_aircraft)
+        create(msg, id_user, id_aircraft, req.files)
             .then(data => {
                 res.status(200).json({
                     message: 'Created successfully',

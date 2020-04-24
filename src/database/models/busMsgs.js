@@ -32,6 +32,11 @@ export default function(sequelize, DataTypes) {
 			},
 			field: 'id_aircraft'
 		},
+		file: {
+			type: DataTypes.STRING(250),
+			allowNull: false,
+			field: 'file'
+		},
 		createdAt: {
 			type: DataTypes.DATE,
 			allowNull: true,

@@ -11,7 +11,7 @@ const getOne = async (id_aircraft) => {
     include: [{
       model: db.authUsers,
       as: 'authUsers',
-      attributes: ['name', 'last_name', 'email', 'img'],
+      attributes: ['name', 'last_name', 'email', 'file'],
        include: [{
           model: db.authDeps,
           as: 'authDeps',
