@@ -4,11 +4,9 @@ import db from '../../database/models/index';;
 const update = async (id, name, last_name, email, id_dep, id_level, img, files) => {
   let dir = './public/images/';
   let newname = new Date().getTime();
-  console.log(files[0]);
   if (files[0]){
         img = newname + files[0].originalname;
      }
-console.log(img);
 
   return await db.authUsers.update({
     name, last_name, email, id_dep, id_level, img

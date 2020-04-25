@@ -105,7 +105,9 @@ export async function updateRegister(req, res, next) {
             status,
             img
         } = req.body;
-        //const codeA = codeGenerate.generate(password);
+        console.log(id);
+        console.log(name);
+        console.log(reference);
         await update(id, name, reference, id_user, status, img, req.files)
             .then(data => {
                 res.json({
